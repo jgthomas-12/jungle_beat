@@ -45,7 +45,8 @@ class LinkedList
   end
   
   def to_string
-    @head.data
+    @head.data + " " + find_tail.next_node.data
+    # @head.data
   end
   
   def find_tail
