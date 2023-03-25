@@ -9,17 +9,14 @@ class LinkedList
     if @head == nil 
       @head = Node.new(data)
     else
-      #check next node is nil
-      #while or until loop
-      #@until something is true or while something is true, continue until false
       #make sure we're at the end of the list find_tail
       while @head.next_node = nil
-        # new_node.find_tail
+        # @head.find_tail
       end
     end
     @head.data
   end
-
+  
   def count
     counter = 0
     while @head != nil
@@ -31,15 +28,24 @@ class LinkedList
     end
     counter
   end
-
+  
   def to_string
-    @head.node.data
+    @head.data
   end
-
+  
   def find_tail
     #push to end of list while next_node is full
+    while @head.next_node != nil
+      #go to next node
+      if @head.next_node == nil
+        @head.next_node = Node.new(data)
+      end
+    end
   end
 end
+#check next node is nil
+#while or until loop
+#@until something is true or while something is true, continue until false
 
 #build in some kind of identifier...unless we can use the data values as ids?
 #each node is a package of information 
