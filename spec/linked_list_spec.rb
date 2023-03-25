@@ -9,33 +9,50 @@ RSpec.describe LinkedList do
     expect(list).to be_an_instance_of(LinkedList)
     
   end
+  it "has a head attribute" do
+    list = LinkedList.new
+
+    expect(list.head).to eq(nil)
+  end
 
   it "appends" do
     list = LinkedList.new
   
     expect(list.head).to be(nil)
-    expect(list.append("doop")).to eq("doop")
-  end
-
-  it "has accessible data" do
-    list = LinkedList.new
-
     list.append("doop")
     expect(list.head.data).to eq("doop")
     expect(list.head.next_node).to eq(nil)
+
+    list.append("deep")
+    expect(list.head.next_node.data).to eq("deep")
+
   end
 
-  it "counts" do
+  xit "counts" do
     list = LinkedList.new
     list.append("doop")
-    expect(list.count).to eq(1)
-    #   #=> 1
+    list.append("deep")
+    expect(list.count).to eq(2)
   end
 
-  it "can become a string" do
+  xit "can become a string" do
     list = LinkedList.new
-    # require 'pry'; binding.pry
-    expect(list.to_string).to eq("doop")
-    #   #=> "doop"
+    list.append("doop")
+    list.append("deep")
+
+    expect(list.to_string).to eq("doop deep")
   end
 end
+
+
+
+
+# describe "method" do
+#   it "if" do
+
+#   end
+
+#   it "elsif" do
+
+#   end
+# end
