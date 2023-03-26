@@ -20,6 +20,7 @@ RSpec.describe LinkedList do
 
     expect(list.head).to be(nil)
     list.append("doop")
+    # require 'pry'; binding.pry
     expect(list.head.data).to eq("doop")
     expect(list.head.next_node).to eq(nil)
 
@@ -36,7 +37,7 @@ RSpec.describe LinkedList do
     expect(list.count).to eq(2)
   end
 
-  it "can become a string" do
+  it "can list a string" do
     list = LinkedList.new
     list.append("doop")
     list.append("deep")
@@ -44,39 +45,63 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("doop deep")
   end
 
+  it "can list single or multiple strings" do
+    list = LinkedList.new
+    list.append("plop")
+    
+    expect(list.head.data).to eq("plop")
+    expect(list.head.next_node).to eq(nil)
+    expect(list.to_string).to eq("plop")
+    
+    list.append("suu")
+
+    expect(list.head.next_node.data).to eq("suu")
+    expect(list.to_string).to eq("plop suu")
+  end
+
   it "can prepend" do
     list = LinkedList.new
     list.append("plop")
-    
-    expect(list.head.data).to eq("plop")
-    expect(list.head.next_node).to eq(nil)
-    expect(list.to_string).to eq("plop")
-    
     list.append("suu")
-
-    expect(list.head.next_node.data).to eq("suu")
-    
     list.prepend("dop")
     
-    expect(list.head.data).to eq("dop")
     expect(list.to_string).to eq("dop plop suu")
+    expect(list.head.data).to eq("dop")
     expect(list.count).to eq(3)
   end 
 
-  xit "can insert" do
+  it "can insert" do
     list = LinkedList.new
+    list.append("dop")
     list.append("plop")
     list.append("suu")
 
-    expect(list.head.data).to eq("plop")
-    expect(list.head.next_node).to eq(nil)
-    expect(list.to_string).to eq("plop")
-    expect(list.head.next_node.data).to eq("suu")
+    # expect(list.head.data).to eq("plop")
+    # expect(list.head.next_node).to eq(nil)
+    # expect(list.to_string).to eq("plop")
+    # expect(list.head.next_node.data).to eq("suu")
     
     list.insert(1, "woo")
-    expect(list.head.next_node.data).to eq("woo")
+    # expect(list.head.next_node.data).to eq("woo")
     expect(list.to_string).to eq("dop woo plop suu")
     
+  end
+
+  it "can find" do
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    
+    
+    expect(list.to_string).to eq ("deep woo shi shu blop")
+    # => "deep woo shi shu blop"
+    expect(list.find(2, 1)).to eq ("shi")
+    # => "shi"
+    expect(list.find(1, 3)).to eq("woo shi shu")
+    # => "woo shi shu"
   end
 end
 
