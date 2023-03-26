@@ -3,7 +3,7 @@ class LinkedList
   def initialize
     @head = nil
   end
-
+  
   # def append(data)
   #   # new_node = Node.new(data)
   #   require 'pry'; binding.pry
@@ -30,6 +30,86 @@ class LinkedList
     end
   end
   
+  def prepend(data)
+    new_node = Node.new(data)
+
+    if @head == nil
+      @head = new_node
+    else
+      new_node.next_node = @head
+      @head = new_node
+    end
+  end
+
+  def insert(index, data)
+    current_node = @head
+    (index - 1).times do #finds the position just before index
+      current_node = current_node.next_node #current node next_node lines up for insertion
+    end
+    insert_node = Node.new(data)
+    insert_node.next_node = current_node.next_node #attaches
+    current_node.next_node = insert_node
+  end
+  
+
+  # def insert(new_position_value, data)
+  #   # current_node = @head
+  #   index_counter = 0 
+  #     if @head != nil
+  #       place_holder = nil
+  #       index_counter = 1
+  #       insert_node = Node.new(data)
+  #       while index_counter < new_position_value
+  #         current_node = current_node.next_node
+  #         index_counter += 1
+  #         if index_counter == new_position_value
+  #           place_holder = insert_node.next_node #this should make a space in insert_node.next_node
+  #           insert_node.next_node = insert_node   #this should actually insert the insert_node
+  #           insert_node.next_node = place_holder #this should refer to the new insert_node's next_node and add the held value with other values attached to it     
+  #         end
+  #         break
+  #       end 
+  #     else @head == nil
+  #       @head = Node.new(data)
+  #     end
+  #   # need to make a new node to be inserted 
+  #   # if empty, make it the head. 
+  #   # if you're trying to insert more than is there, throw error
+  #   # example: insert in index 4 but there are only 2 linked list items = "error, list not long enough"
+  #   # The inserted node should become the next_node of the node prior and will have the node after become the next_node of current_node
+  # end
+
+  # def insert(new_position_value, data)
+  #   # current_node = Node.new(data)
+  #   # placeholder = nil
+  #   index_counter = 0 
+  #   if head != nil
+  #     place_holder = nil
+  #     index_counter = 1
+  #     insert_node = Node.new(data)
+  #     while index_counter < new_position_value
+  #       insert_node = insert_node.next_node
+  #       index_counter += 1
+  #       # proceed to next node
+  #       if index_counter == new_position_value
+  #         place_holder = insert_node.next_node #this should make a space in insert_node.next_node
+  #         insert_node.next_node = insert_node   #this should actually insert the insert_node
+  #         insert_node.next_node = place_holder #this should refer to the new insert_node's next_node and add the held value with other values attached to it     
+  #       end
+  #       break
+  #     end
+  #   else #@head == nil
+  #     # require 'pry'; binding.pry
+  #     @head = Node.new(data)
+  #     # place_holder = nil
+  #   end
+  #   # need to make a new node to be inserted 
+  #   # if empty, make it the head. 
+  #   # if you're trying to insert more than is there, throw error
+  #   # example: insert in index 4 but there are only 2 linked list items = "error, list not long enough"
+  #   # The inserted node should become the next_node of the node prior and will have the node after become the next_node of current_node
+  # end
+  
   def count
     current_node = @head
     if current_node.next_node == nil
@@ -44,17 +124,35 @@ class LinkedList
     counter
   end
   
-  def to_string
-    @head.data + " " + find_tail.next_node.data
-    # @head.data
-  end
+  # def to_string
+  #   if count <= 1
+  #       @head.data
+  #     else
+  #       @head.data + " " + find_tail.next_node.data
+  #       require 'pry'; binding.pry
+  #     end
+  #     # Need to loop this action -> + " " + find_tail.next_node.data
+  #   # @head.data
+  # end
   
+  def to_string
+    beats = []
+    current_node = head 
+ 
+    until current_node == nil
+      beats << current_node.data 
+      current_node = current_node.next_node
+    end
+    beats.join(" ")
+  end
+      
+
   def find_tail
-    current_node = @head
-    if current_node.next_node == false
+    current_node = head
+    if current_node.next_node == nil
       current_node
     else
-      while current_node.next_node == true 
+      while !current_node.next_node.nil? 
         current_node = current_node.next_node
       end
       current_node
