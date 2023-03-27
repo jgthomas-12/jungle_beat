@@ -115,7 +115,7 @@ RSpec.describe LinkedList do
     # => false
   end
 
-  xit "has a pop method" do
+  it "has a pop method" do
     list = LinkedList.new
     list.append("deep")
     list.append("woo")
@@ -124,12 +124,11 @@ RSpec.describe LinkedList do
     list.append("blop")
     
     
-    expect(list.pop).to be ("blop")
-    # => "blop"
-    expect(list.pop).to be ("shu")
-    # => "shu"
-    expect(list.to_string).to be ("deep woo shi")
-    # => "deep woo shi" 
+    expect(list.pop).to eq("blop")
+    expect(list.count).to eq(4)
+    expect(list.pop).to eq("shu")
+    expect(list.count).to eq(3)
+    expect(list.to_string).to eq("deep woo shi")
   end
   
 end
