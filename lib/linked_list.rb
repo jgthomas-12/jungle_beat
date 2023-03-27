@@ -111,6 +111,17 @@ class LinkedList
   end
   #include has to traverse the line 
   #it has to assess the input vs the current_node.data
+
+  def includes?(data)
+    current_node = head
+    until current_node.next_node == nil
+      if data != current_node.data
+        return false
+      else 
+        return true
+      end
+    end
+  end
   
   def count
     current_node = @head
@@ -136,10 +147,43 @@ class LinkedList
     end
     beats.join(" ")
   end
-      
+
+  def pop
+    current_node = head
+    node_removed = []
+    x = count 
+    node_position = x - 2
+    node_position.times do
+      current_node = current_node.next_node
+    end
+    node_removed << current_node.next_node
+    current_node.next_node = nil
+    node_removed[0].data
+    # require 'pry'; binding.pry
+    # until list_length = (count - 1)
+    #   current_node = current_node.next_node
+    # end
+  end
+
+
+  # def pop
+  #   require 'pry'; binding.pry
+  #   current_node = head
+  #   node_removed = []
+  #   until current_node == nil
+  #     current_node = current_node.next_node
+  #     if current_node.next_node == nil
+  #       require 'pry'; binding.pry
+  #        #current node into node removed
+  #     end
+  #   end
+  #   #needs to find the #node before the last node of the list?  
+  #   #needs to remove the last node
+  #   #needs to set the new last node's next_node to nil
+  #   #probably needs to delete the node it takes off?
+  # end
 
 end
-
 
 #check next node is nil
 #while or until loop
