@@ -87,7 +87,35 @@ RSpec.describe LinkedList do
     
   end
 
-  it "can find" do
+  it "can find data" do
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    
+    expect(list.to_string).to eq ("deep woo shi shu blop")
+    expect(list.find(2, 1)).to eq ("shi")
+    expect(list.find(1, 3)).to eq("woo shi shu")
+  end
+
+  it "can figure out what's inside the list" do
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    
+    expect(list.includes?("deep")).to be true
+    # => true
+    expect(list.includes?("dep")).to be false
+    # => false
+  end
+
+  xit "has a pop method" do
     list = LinkedList.new
     list.append("deep")
     list.append("woo")
@@ -96,24 +124,13 @@ RSpec.describe LinkedList do
     list.append("blop")
     
     
-    expect(list.to_string).to eq ("deep woo shi shu blop")
-    # => "deep woo shi shu blop"
-    expect(list.find(2, 1)).to eq ("shi")
-    # => "shi"
-    expect(list.find(1, 3)).to eq("woo shi shu")
-    # => "woo shi shu"
+    expect(list.pop).to be ("blop")
+    # => "blop"
+    expect(list.pop).to be ("shu")
+    # => "shu"
+    expect(list.to_string).to be ("deep woo shi")
+    # => "deep woo shi" 
   end
+  
 end
 
-
-
-
-# describe "method" do
-#   it "if" do
-
-#   end
-
-#   it "elsif" do
-
-#   end
-# end
