@@ -115,6 +115,7 @@ class LinkedList
     node_removed << current_node.next_node
     current_node.next_node = nil
     node_removed[0].data
+    # Do i actually need to remove the node_removed array?
   end
 end
 
