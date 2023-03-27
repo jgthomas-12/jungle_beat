@@ -5,31 +5,37 @@ class LinkedList
   end
   
   # def append(data)
-  #   # new_node = Node.new(data)
-  #   require 'pry'; binding.pry
-  #   if @head # == nil 
-  #     # @head = Node.new(data)
-  #     # if the head is occupied use find_tail to access the next_node attribute and establish a new node instance 
-  #     find_tail = Node.new(data)
-  #   else
-  #     #make sure we're at the end of the list find_tail
-  #     #if the head is not occupied make a new node instance
+  #   if @head == nil
   #     @head = Node.new(data)
-  #       # while @head.next_node == nil
-  #       #   @head.find_tail
+  #   else
+  #     find_tail.next_node = Node.new(data)
   #   end
-
-  #   @head.data
   # end
   
+  # def find_tail
+  #   current_node = head
+  #   if current_node.next_node == nil
+  #     current_node
+  #   else
+  #     while !current_node.next_node.nil? 
+  #       current_node = current_node.next_node
+  #     end
+  #     current_node
+  #   end
+  # end
+
   def append(data)
     if @head == nil
       @head = Node.new(data)
     else
-      find_tail.next_node = Node.new(data)
+      current_node = head
+      while !current_node.next_node.nil?
+        current_node = current_node.next_node
+      end
+      current_node.next_node = Node.new(data)
     end
   end
-  
+
   def prepend(data)
     new_node = Node.new(data)
 
@@ -96,6 +102,15 @@ class LinkedList
     # example: insert in index 4 but there are only 2 linked list items = "error, list not long enough"
     # The inserted node should become the next_node of the node prior and will have the node after become the next_node of current_node
   end
+
+  def includes?(data)
+    current_node = @head
+    until current_node.data == data
+      false
+    end
+  end
+  #include has to traverse the line 
+  #it has to assess the input vs the current_node.data
   
   def count
     current_node = @head
@@ -123,17 +138,6 @@ class LinkedList
   end
       
 
-  def find_tail
-    current_node = head
-    if current_node.next_node == nil
-      current_node
-    else
-      while !current_node.next_node.nil? 
-        current_node = current_node.next_node
-      end
-      current_node
-    end
-  end
 end
 
 
