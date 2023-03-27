@@ -3,26 +3,6 @@ class LinkedList
   def initialize
     @head = nil
   end
-  
-  # def append(data)
-  #   if @head == nil
-  #     @head = Node.new(data)
-  #   else
-  #     find_tail.next_node = Node.new(data)
-  #   end
-  # end
-  
-  # def find_tail
-  #   current_node = head
-  #   if current_node.next_node == nil
-  #     current_node
-  #   else
-  #     while !current_node.next_node.nil? 
-  #       current_node = current_node.next_node
-  #     end
-  #     current_node
-  #   end
-  # end
 
   def append(data)
     if @head == nil
@@ -65,20 +45,6 @@ class LinkedList
     current_node.next_node.data
   end
 
-  # def insert(index, data)
-  #   current_node = @head
-  #   (index - 1).times do #finds the position just before index
-  #     current_node = current_node.next_node #current node next_node lines up for insertion
-  #   end
-  #   insert_node = Node.new(data)
-  #   insert_node.next_node = current_node.next_node #attaches
-  #   current_node.next_node = insert_node
-  # end
-
-  # this method passes but...
-  # if it passes index 0 what happens...index -1.times would break it?
-  # this also can't insert a head into the list if nothing exists 
-
   def insert(new_position_value, data)
     current_node = @head
     index_counter = 0 
@@ -102,15 +68,6 @@ class LinkedList
     # example: insert in index 4 but there are only 2 linked list items = "error, list not long enough"
     # The inserted node should become the next_node of the node prior and will have the node after become the next_node of current_node
   end
-
-  def includes?(data)
-    current_node = @head
-    until current_node.data == data
-      false
-    end
-  end
-  #include has to traverse the line 
-  #it has to assess the input vs the current_node.data
 
   def includes?(data)
     current_node = head
@@ -159,42 +116,6 @@ class LinkedList
     node_removed << current_node.next_node
     current_node.next_node = nil
     node_removed[0].data
-    # require 'pry'; binding.pry
-    # until list_length = (count - 1)
-    #   current_node = current_node.next_node
-    # end
   end
-
-
-  # def pop
-  #   require 'pry'; binding.pry
-  #   current_node = head
-  #   node_removed = []
-  #   until current_node == nil
-  #     current_node = current_node.next_node
-  #     if current_node.next_node == nil
-  #       require 'pry'; binding.pry
-  #        #current node into node removed
-  #     end
-  #   end
-  #   #needs to find the #node before the last node of the list?  
-  #   #needs to remove the last node
-  #   #needs to set the new last node's next_node to nil
-  #   #probably needs to delete the node it takes off?
-  # end
-
 end
 
-#check next node is nil
-#while or until loop
-#@until something is true or while something is true, continue until false
-
-#build in some kind of identifier...unless we can use the data values as ids?
-#each node is a package of information 
-#each package needs to be able to locate itself based on itslef and the one after 
-#find enumerable...? probably not because it is based on and makes an array
-#see/search for the data
-#count how many times have done that
-
-#google finding or setting a tail in a linked list ruby
-#find_tail method...anytime call method it will recalculate the list 
