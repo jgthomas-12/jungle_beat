@@ -108,8 +108,7 @@ class LinkedList
   def pop
     current_node = head
     node_removed = []
-    x = count 
-    node_position = x - 2
+    node_position = count - 2
     node_position.times do
       current_node = current_node.next_node
     end
