@@ -60,7 +60,6 @@ class LinkedList
       else @head == nil
         @head = Node.new(data)
       end
-     the next_node of the node prior and will have the node after become the next_node of current_node
   end
 
   def includes?(data)
