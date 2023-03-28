@@ -41,7 +41,6 @@ RSpec.describe JungleBeat do
     expect(jb.count).to eq(6)
     expect(jb.list.count).to eq(6)
     jb.play
-    # plays the sounds deep doo ditt woo hoo shu
   end
 
   it "has a defined list" do
@@ -58,8 +57,6 @@ RSpec.describe JungleBeat do
 
     jb.append("Mississippi")
     expect(jb.all).to eq("deep")
-    #all method will return the data of all of the defined the nodes in a string 
-    #do i return a rejection for the string that doesn't work?
   end
   
   it "can prepend data" do
@@ -67,20 +64,17 @@ RSpec.describe JungleBeat do
     
     jb.prepend("tee tee tee Mississippi")
     expect(jb.all).to eq("tee tee tee deep")
-    #prepend will prepend all data not in defined list 
   end
   
   it "can adjust the rate" do
     jb = JungleBeat.new("deep dop dop deep")
     
     jb.play
-    # => 4 # plays the four sounds normal speed with Boing voice
     expect(jb.rate = 50).to eq(50)
     jb.play
     expect(jb.rate = 300).to eq(300)
     jb.play
     jb.play
-    # => 4 # plays the four sounds slower with Boing voice
   end
 
   it "can control the voice" do
@@ -88,11 +82,14 @@ RSpec.describe JungleBeat do
     
     expect(jb.voice = "Daniel").to eq("Daniel")
     jb.play
-    # => 4 # plays the four sounds slower with Daniel voice
+  end
+
+  it "can reset rate and voice" do
+    jb = JungleBeat.new("deep dop dop deep")
+    
     expect(jb.reset_rate).to eq(500)
     expect(jb.reset_voice).to eq("Boing")
     jb.play
-    # => 4 # plays the four sounds normal speed with Boing voice
   end
 
 end
