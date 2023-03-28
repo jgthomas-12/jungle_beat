@@ -18,7 +18,6 @@ class LinkedList
 
   def prepend(data)
     new_node = Node.new(data)
-
     if @head == nil
       @head = new_node
     else
@@ -29,17 +28,16 @@ class LinkedList
 
   def find(index, data)
     current_node = @head
-    
     if data > 1
       sound_list = ""
       data.times do
-        current_node = current_node.next_node #current node next_node lines up for insertion
+        current_node = current_node.next_node 
         sound_list += "#{current_node.data}" + " "
       end  
       return sound_list.rstrip
     else
-      (index - 1).times do #finds the position just before index
-        current_node = current_node.next_node #current node next_node lines up for insertion
+      (index - 1).times do 
+        current_node = current_node.next_node 
       end
     end
     current_node.next_node.data
@@ -56,17 +54,13 @@ class LinkedList
           current_node = current_node.next_node
           index_counter += 1
         end
-        place_holder = current_node.next_node #this should make a space in insert_node.next_node
-        current_node.next_node = insert_node   #this should actually insert the insert_node
-        insert_node.next_node = place_holder #this should refer to the new insert_node's next_node and add the held value with other values attached to it    
+        place_holder = current_node.next_node
+        current_node.next_node = insert_node  
+        insert_node.next_node = place_holder 
       else @head == nil
         @head = Node.new(data)
       end
-    # need to make a new node to be inserted 
-    # if empty, make it the head. 
-    # if you're trying to insert more than is there, throw error
-    # example: insert in index 4 but there are only 2 linked list items = "error, list not long enough"
-    # The inserted node should become the next_node of the node prior and will have the node after become the next_node of current_node
+     the next_node of the node prior and will have the node after become the next_node of current_node
   end
 
   def includes?(data)
@@ -93,29 +87,16 @@ class LinkedList
     end
     counter
   end
-  
-  # def to_string
-  #   beats = []
-  #   current_node = head 
- 
-  #   until current_node == nil
-  #     beats << current_node.data 
-  #     current_node = current_node.next_node
-  #   end
-  #   beats.join(" ")
-  # end
 
   def to_string
     beats = ""
     current_node = head 
- 
     until current_node == nil
       beats += current_node.data + " "
       current_node = current_node.next_node
     end
     beats.rstrip
   end
-
 
   def pop
     current_node = head
@@ -127,8 +108,6 @@ class LinkedList
     node_removed = current_node.next_node
     current_node.next_node = nil
     node_removed.data
-    # require 'pry'; binding.pry
   end
-
 end
 
