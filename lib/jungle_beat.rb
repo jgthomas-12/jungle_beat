@@ -1,6 +1,6 @@
 class JungleBeat
-  attr_accessor :data
-  attr_reader :list
+  # attr_accessor :data
+  attr_reader :list, :data
   def initialize(data = " ")
     @list = LinkedList.new #by calling this a new list is established with the attributes of the list
     @data = append(data) #this works because I make a new node in the append method below
@@ -17,16 +17,44 @@ class JungleBeat
     end
     data
   end
-  
+
+  def prepend(data)
+    datum = data.split(" ")
+    datum.each do |data2|
+      if defined_beats?(data2) #turns the method into a boolean value
+        list.prepend(data2) 
+      end
+    end
+    data
+  end
+
   def count
     list.count
   end
 
-  def play
+  def rate=value
     beats = list.to_string
-    `say -r 175 -v Daniel #{beats}`
+    `say -r #{value} -v Boing #{beats}`
   end
 
+  def voice=value
+    beats = list.to_string
+    `say -r 175 -v #{value} #{beats}`
+  end
+
+  def play
+    beats = list.to_string
+    `say -r 175 -v Boing #{beats}`
+  end
+
+  def reset_rate
+    rate = 500
+  end
+
+  def reset_voice
+    voice = "Boing"
+  end
+  
   def defined_beats?(data)
     defined_beats = ["tee", "dee", "deep", "bop", "boop", "la", "na", "deep", "doo", "ditt", "woo", "hoo", "shu"]
     defined_beats.include?(data)
