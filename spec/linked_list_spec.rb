@@ -21,20 +21,17 @@ RSpec.describe LinkedList do
 
     expect(list.head).to be(nil)
     list.append("doop")
-    # require 'pry'; binding.pry
     expect(list.head.data).to eq("doop")
     expect(list.head.next_node).to eq(nil)
-
     list.append("deep")
-    # require 'pry'; binding.pry
     expect(list.head.next_node.data).to eq("deep")
-
   end
 
   it "counts" do
     list = LinkedList.new
     list.append("doop")
     list.append("deep")
+
     expect(list.count).to eq(2)
   end
 
@@ -76,14 +73,8 @@ RSpec.describe LinkedList do
     list.append("dop")
     list.append("plop")
     list.append("suu")
-
-    # expect(list.head.data).to eq("plop")
-    # expect(list.head.next_node).to eq(nil)
-    # expect(list.to_string).to eq("plop")
-    # expect(list.head.next_node.data).to eq("suu")
     
     list.insert(1, "woo")
-    # expect(list.head.next_node.data).to eq("woo")
     expect(list.to_string).to eq("dop woo plop suu")
     
   end
@@ -111,9 +102,7 @@ RSpec.describe LinkedList do
     list.append("blop")
     
     expect(list.includes?("deep")).to be true
-    # => true
     expect(list.includes?("dep")).to be false
-    # => false
   end
 
   it "has a pop method" do
@@ -131,6 +120,5 @@ RSpec.describe LinkedList do
     expect(list.count).to eq(3)
     expect(list.to_string).to eq("deep woo shi")
   end
-  
 end
 
