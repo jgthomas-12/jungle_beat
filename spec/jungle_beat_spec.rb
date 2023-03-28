@@ -63,7 +63,7 @@ RSpec.describe JungleBeat do
     #do i return a rejection for the string that doesn't work?
   end
   
-  xit "can prepend data" do
+  it "can prepend data" do
     jb = JungleBeat.new("deep")
     
     jb.prepend("tee tee tee Mississippi")
@@ -71,17 +71,20 @@ RSpec.describe JungleBeat do
     #prepend will prepend all data not in defined list 
   end
   
-  xit "can adjust the rate" do
+  it "can adjust the rate" do
     jb = JungleBeat.new("deep dop dop deep")
     
     jb.play
     # => 4 # plays the four sounds normal speed with Boing voice
-    expect(jb.rate = 100).to eq(100)
+    expect(jb.rate = 50).to eq(50)
+    jb.play
+    expect(jb.rate = 300).to eq(300)
+    jb.play
     jb.play
     # => 4 # plays the four sounds slower with Boing voice
   end
 
-  xit "can control the voice" do
+  it "can control the voice" do
     jb = JungleBeat.new("deep dop dop deep")
 
     expect(jb.voice = "Daniel").to eq("Daniel")
