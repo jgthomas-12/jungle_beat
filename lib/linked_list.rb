@@ -31,12 +31,12 @@ class LinkedList
     current_node = @head
     
     if data > 1
-      sound_list = []
+      sound_list = ""
       data.times do
         current_node = current_node.next_node #current node next_node lines up for insertion
-        sound_list << current_node.data
+        sound_list += "#{current_node.data}" + " "
       end  
-      return sound_list.join(" ")
+      return sound_list.rstrip
     else
       (index - 1).times do #finds the position just before index
         current_node = current_node.next_node #current node next_node lines up for insertion
@@ -94,28 +94,41 @@ class LinkedList
     counter
   end
   
+  # def to_string
+  #   beats = []
+  #   current_node = head 
+ 
+  #   until current_node == nil
+  #     beats << current_node.data 
+  #     current_node = current_node.next_node
+  #   end
+  #   beats.join(" ")
+  # end
+
   def to_string
-    beats = []
+    beats = ""
     current_node = head 
  
     until current_node == nil
-      beats << current_node.data 
+      beats += current_node.data + " "
       current_node = current_node.next_node
     end
-    beats.join(" ")
+    beats.rstrip
   end
+
 
   def pop
     current_node = head
-    node_removed = []
+    node_removed = ""
     node_position = count - 2
     node_position.times do
       current_node = current_node.next_node
     end
-    node_removed << current_node.next_node
+    node_removed = current_node.next_node
     current_node.next_node = nil
-    node_removed[0].data
-    # Do i actually need to remove the node_removed array?
+    node_removed.data
+    # require 'pry'; binding.pry
   end
+
 end
 
