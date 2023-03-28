@@ -37,7 +37,6 @@ RSpec.describe JungleBeat do
   
   it "can play all the sounds" do
     jb = JungleBeat.new
-    
     expect(jb.append("deep doo ditt woo hoo shu")).to eq("deep doo ditt woo hoo shu")
     expect(jb.count).to eq(6)
     expect(jb.list.count).to eq(6)
@@ -86,7 +85,7 @@ RSpec.describe JungleBeat do
 
   it "can control the voice" do
     jb = JungleBeat.new("deep dop dop deep")
-
+    
     expect(jb.voice = "Daniel").to eq("Daniel")
     jb.play
     # => 4 # plays the four sounds slower with Daniel voice
