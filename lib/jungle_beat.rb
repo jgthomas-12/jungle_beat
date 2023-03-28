@@ -1,13 +1,12 @@
 class JungleBeat
-  # attr_accessor :data
   attr_reader :list, :data
   def initialize(data = " ")
-    @list = LinkedList.new #by calling this a new list is established with the attributes of the list
-    @data = append(data) #this works because I make a new node in the append method below
+    @list = LinkedList.new 
+    @data = append(data) 
   end
 
   def all
-    list.to_string #to_string already lists the output in a string 
+    list.to_string 
   end
 
   def append(data)
@@ -61,4 +60,4 @@ class JungleBeat
   end
 end
 
-# beats = ""
+
